@@ -52,3 +52,10 @@ C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\obj\Debug\net6.0\refin
 C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\obj\Debug\net6.0\Teste.pdb
 C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\obj\Debug\net6.0\Teste.genruntimeconfig.cache
 C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\obj\Debug\net6.0\ref\Teste.dll
+C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\bin\Debug\net6.0\WeatherForecast.Tests\obj\project.assets.json
+C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\bin\Debug\net6.0\WeatherForecast.Tests\obj\WeatherForecast.Tests.csproj.nuget.dgspec.json
+C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\bin\Debug\net6.0\xunit.abstractions.dll
+C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\bin\Debug\net6.0\xunit.assert.dll
+C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\bin\Debug\net6.0\xunit.core.dll
+C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\Teste\bin\Debug\net6.0\xunit.execution.dotnet.dll
+C:\Users\luizf\OneDrive\Desktop\Git\weatherforecast\teste\bin\Debug\net6.0\Newtonsoft.Json.dll
