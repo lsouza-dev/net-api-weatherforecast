@@ -29,5 +29,17 @@ namespace Teste.Controllers
             })
             .ToArray();
         }
+
+
+        
+        [HttpGet("{city}")]
+        public async Task<IActionResult> GetWeather(string city)
+        {
+            var client = new HttpClient();
+            var response = await client.GetStringAsync($"https://api.weather.com/{city}");
+            return Ok(response);
+        }
     }
+
+
 }
