@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\teste\\Teste.csproj": {}
+    "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\Teste\\WeatherForecast.Tests\\WeatherForecast.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\teste\\Teste.csproj": {
+    "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\Teste\\WeatherForecast.Tests\\WeatherForecast.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\teste\\Teste.csproj",
-        "projectName": "Teste",
-        "projectPath": "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\teste\\Teste.csproj",
+        "projectUniqueName": "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\Teste\\WeatherForecast.Tests\\WeatherForecast.Tests.csproj",
+        "projectName": "WeatherForecast.Tests",
+        "projectPath": "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\Teste\\WeatherForecast.Tests\\WeatherForecast.Tests.csproj",
         "packagesPath": "C:\\Users\\luizf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\teste\\obj\\",
+        "outputPath": "C:\\Users\\luizf\\OneDrive\\Desktop\\Git\\weatherforecast\\Teste\\WeatherForecast.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luizf\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,17 +38,25 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Newtonsoft.Json": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[17.1.0, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[3.1.2, )"
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.9.3, )"
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
             }
           },
           "imports": [
@@ -63,14 +71,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
         }
       }
     }
