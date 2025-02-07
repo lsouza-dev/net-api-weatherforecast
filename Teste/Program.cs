@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Configuration.AddEnvironmentVariables();
+builder.Services.AddControllers();
+
+builder.Services.AddDbContext<Repository.Context.WeatherContext>(options =>
+   options.UseMySql(
+           builder.Configuration.GetConnectionString("MySql"),
+           ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySql"))
+       )
+); 
+
     
 var app = builder.Build();
 
