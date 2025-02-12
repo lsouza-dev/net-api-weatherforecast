@@ -1,6 +1,7 @@
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using WeatherForecast.Models;
 
 
 
@@ -48,11 +49,11 @@ namespace Teste.Controllers
 
 
         [HttpGet("{city}")]
-        public async Task<IActionResult> GetWeather(string city)
+        public async Task<IActionResult> GetWeatherByCity(string city)
         {
             var client = new HttpClient();
             // Monta a URL corretamente com o parâmetro 'key' e 'q' (cidade)
-            var url = $"{BASE_URL}?key={API_KEY}&q={city}";
+            var url = $"{BASE_URL}/current.json?key={API_KEY}&q={city}&lang=pt";
 
             try
             {
@@ -82,6 +83,39 @@ namespace Teste.Controllers
                 // Captura e retorna qualquer erro inesperado
                 return StatusCode(500, $"Erro interno: {ex.Message}");
             }
+        }
+
+        [HttpGet("{city}/days/{days}")]
+        public async Task<IActionResult> GetWeatherByCityAndDays (string city,int days)
+        {
+            var client = new HttpClient();
+            var url = $"{BASE_URL}/forecast.json?key={API_KEY}&q={city}&days={days}&lang=pt";
+
+            try
+            {
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var weatherResponse = JsonConvert.DeserializeObject<Root>(content);
+
+
+                    var root = new Root(weatherResponse);
+                    Console.WriteLine(root.location.name);
+
+                    var formattedJson = JsonConvert.SerializeObject(weatherResponse, Newtonsoft.Json.Formatting.Indented);
+                    
+                    
+                    return Ok(formattedJson);
+                }
+
+                return StatusCode((int)response.StatusCode, "Erro ao acessar a API");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno: {ex.Message}");
+            }
+
         }
 
     }

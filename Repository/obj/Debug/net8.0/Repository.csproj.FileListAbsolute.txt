@@ -7,6 +7,7 @@ C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditor
 C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
 C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
 C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.sourcelink.json
 C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.dll
 C:\WeatherForecast\Repository\obj\Debug\net8.0\refint\Repository.dll
 C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.pdb
