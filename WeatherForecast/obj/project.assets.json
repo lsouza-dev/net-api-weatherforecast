@@ -1927,7 +1927,8 @@
           "Microsoft.Extensions.Configuration": "9.0.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "9.0.1",
           "Microsoft.Extensions.Configuration.Json": "9.0.1",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.0"
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.0",
+          "WeatherForecast": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Repository.dll": {}
@@ -6545,5 +6546,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Ciclo detectado. \r\n  WeatherForecast -> Repository -> WeatherForecast.",
+      "libraryId": "WeatherForecast",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

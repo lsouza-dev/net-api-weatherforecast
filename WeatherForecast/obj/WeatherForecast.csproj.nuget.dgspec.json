@@ -31,7 +31,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\WeatherForecast\\WeatherForecast\\WeatherForecast.csproj": {
+                "projectPath": "C:\\WeatherForecast\\WeatherForecast\\WeatherForecast.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -34,17 +34,17 @@ namespace Teste.Controllers
 
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<Repository.Models.WeatherForecast> Get()
-        {
-            return Enumerable.Range(1, 5).Select(index => new Repository.Models.WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
+        //[HttpGet(Name = "GetWeatherForecast")]
+        //public IEnumerable<Repository.Models.WeatherForecast> Get()
+        //{
+        //    return Enumerable.Range(1, 5).Select(index => new Repository.Models.WeatherForecast
+        //    {
+        //        Date = DateTime.Now.AddDays(index),
+        //        TemperatureC = Random.Shared.Next(-20, 55),
+        //        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        //    })
+        //    .ToArray();
+        //}
 
 
 
@@ -101,8 +101,13 @@ namespace Teste.Controllers
 
 
                     var root = new Root(weatherResponse);
-                    Console.WriteLine(root.location.name);
 
+                    var weatherForecastDto = new WeatherForecastDTO(root);
+                    var forecastDayDtoList = root.forecast.forecastday.Select(fd => new ForecastDayDTO(fd)).ToList();
+
+                    var weather = new Repository.Models.WeatherForecast(weatherForecastDto);
+                    var forecastDays = new Repository.Models.ForecastDay(forecastDayDtoList);
+                    
                     var formattedJson = JsonConvert.SerializeObject(weatherResponse, Newtonsoft.Json.Formatting.Indented);
                     
                     

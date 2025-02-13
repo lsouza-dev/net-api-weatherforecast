@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Context;
 
@@ -10,9 +11,11 @@ using Repository.Context;
 namespace Repository.Migrations
 {
     [DbContext(typeof(WeatherContext))]
-    partial class WeatherContextModelSnapshot : ModelSnapshot
+    [Migration("20250212231041_AlteraTabelaWeathersCriaTabelaForecastsDays")]
+    partial class AlteraTabelaWeathersCriaTabelaForecastsDays
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,9 +100,12 @@ namespace Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("VAI_NEVAR");
 
+                    b.Property<int>("WeatherForecastId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("IdWeatherForecast");
+                    b.HasIndex("WeatherForecastId");
 
                     b.ToTable("ForecastsDays");
                 });
@@ -147,6 +153,10 @@ namespace Repository.Migrations
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ICON");
+
+                    b.Property<int>("IdForecast")
+                        .HasColumnType("int")
+                        .HasColumnName("ID_FORECAST");
 
                     b.Property<TimeOnly>("NascerDaLua")
                         .HasColumnType("time(6)")
@@ -202,7 +212,7 @@ namespace Repository.Migrations
                 {
                     b.HasOne("Repository.Models.WeatherForecast", "WeatherForecast")
                         .WithMany("Forecasts")
-                        .HasForeignKey("IdWeatherForecast")
+                        .HasForeignKey("WeatherForecastId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

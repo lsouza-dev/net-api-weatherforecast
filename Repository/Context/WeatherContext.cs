@@ -17,6 +17,18 @@ namespace Repository.Context
         public WeatherContext(DbContextOptions<WeatherContext> options) : base(options) { }
 
         DbSet<WeatherForecast> Weathers { get; set; }
+        DbSet<ForecastDay> ForecastsDays { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<WeatherForecast>()
+                .HasMany(w => w.Forecasts)
+                .WithOne(f => f.WeatherForecast)
+                .HasForeignKey(f => f.IdWeatherForecast);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
 

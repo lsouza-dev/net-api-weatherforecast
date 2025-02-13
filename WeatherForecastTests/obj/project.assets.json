@@ -2248,7 +2248,8 @@
           "Microsoft.Extensions.Configuration": "9.0.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "9.0.1",
           "Microsoft.Extensions.Configuration.Json": "9.0.1",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.0"
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.0",
+          "WeatherForecast": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Repository.dll": {}
