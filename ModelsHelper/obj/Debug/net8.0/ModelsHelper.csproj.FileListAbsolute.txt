@@ -1,0 +1,12 @@
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.GeneratedMSBuildEditorConfig.editorconfig
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.AssemblyInfoInputs.cache
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.AssemblyInfo.cs
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.csproj.CoreCompileInputs.cache
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.sourcelink.json
+C:\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.deps.json
+C:\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.dll
+C:\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.pdb
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.dll
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\refint\ModelsHelper.dll
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.pdb
+C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ref\ModelsHelper.dll

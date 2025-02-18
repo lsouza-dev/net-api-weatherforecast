@@ -1,8 +1,11 @@
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ModelsHelper.Models.Repository;
+using ModelsHelper.Models.Repository.DTOS.Exibicao;
+using ModelsHelper.Models.WeatherForecast;
 using Newtonsoft.Json;
-using WeatherForecast.Models;
-
+using Repository.Context;
 
 
 namespace Teste.Controllers
@@ -20,16 +23,18 @@ namespace Teste.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
 
         private readonly IConfiguration _configuration;
+        private readonly WeatherContext _context;
 
         private readonly string BASE_URL;
         private readonly string API_KEY;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConfiguration configuration)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConfiguration configuration,WeatherContext context)
         {
             _logger = logger;
             _configuration = configuration;
             BASE_URL = _configuration["WeatherApi:BaseUrl"] ?? "";
             API_KEY = Environment.GetEnvironmentVariable("WEATHER_API_KEY") ?? string.Empty;
+            _context = context;
             //_logger.LogInformation("API_KEY: {ApiKey}", API_KEY);
 
         }
@@ -86,7 +91,7 @@ namespace Teste.Controllers
         }
 
         [HttpGet("{city}/days/{days}")]
-        public async Task<IActionResult> GetWeatherByCityAndDays (string city,int days)
+        public async Task<IActionResult> GetWeatherByCityAndDays(string city, int days)
         {
             var client = new HttpClient();
             var url = $"{BASE_URL}/forecast.json?key={API_KEY}&q={city}&days={days}&lang=pt";
@@ -99,18 +104,27 @@ namespace Teste.Controllers
                     var content = await response.Content.ReadAsStringAsync();
                     var weatherResponse = JsonConvert.DeserializeObject<Root>(content);
 
-
                     var root = new Root(weatherResponse);
 
                     var weatherForecastDto = new WeatherForecastDTO(root);
-                    var forecastDayDtoList = root.forecast.forecastday.Select(fd => new ForecastDayDTO(fd)).ToList();
+                    var forecastDayDtoList = weatherForecastDto.Forecasts;
 
-                    var weather = new Repository.Models.WeatherForecast(weatherForecastDto);
-                    var forecastDays = new Repository.Models.ForecastDay(forecastDayDtoList);
-                    
+                    var weather = new WeatherForecast(weatherForecastDto);
+
+
+                    _context.Weathers.Add(weather);
+
+                    foreach (var f in weather.Forecasts)
+                    {
+                        _context.ForecastsDays.Add(f);
+                    }
+
+                    _context.SaveChanges();
+
+
                     var formattedJson = JsonConvert.SerializeObject(weatherResponse, Newtonsoft.Json.Formatting.Indented);
-                    
-                    
+
+
                     return Ok(formattedJson);
                 }
 
@@ -123,7 +137,24 @@ namespace Teste.Controllers
 
         }
 
+
+        [HttpGet("city{city}/day/{day}")]
+        public ActionResult GetWeatherByCityAtDay(string city, int day)
+        {
+            try
+            {
+                var forecasts = _context.ForecastsDays.Where(x => x.Data.Day == day).Include(x => x.WeatherForecast).ToList();
+                if (forecasts == null) return NotFound($"Não foram encontrados registros de clima para a cidade {city} no dia {day}");
+
+                var forecastsDtos = forecasts.Select(f => new ForecastDayExibicaoDTO(f));
+
+                return Ok(forecastsDtos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno: {ex.Message}");
+            }
+        }
+
     }
-
-
 }

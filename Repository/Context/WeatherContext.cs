@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
-using Repository.Models;
 using Microsoft.Extensions.Configuration;
+using ModelsHelper.Models.Repository;
 
 
 namespace Repository.Context
@@ -16,8 +16,8 @@ namespace Repository.Context
     {
         public WeatherContext(DbContextOptions<WeatherContext> options) : base(options) { }
 
-        DbSet<WeatherForecast> Weathers { get; set; }
-        DbSet<ForecastDay> ForecastsDays { get; set; }
+        public DbSet<WeatherForecast> Weathers { get; set; }
+        public DbSet<ForecastDay> ForecastsDays { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

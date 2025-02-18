@@ -2240,6 +2240,16 @@
           "build/net6.0/xunit.runner.visualstudio.props": {}
         }
       },
+      "ModelsHelper/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ModelsHelper.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModelsHelper.dll": {}
+        }
+      },
       "Repository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2248,8 +2258,8 @@
           "Microsoft.Extensions.Configuration": "9.0.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "9.0.1",
           "Microsoft.Extensions.Configuration.Json": "9.0.1",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.0",
-          "WeatherForecast": "1.0.0"
+          "ModelsHelper": "1.0.0",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Repository.dll": {}
@@ -2262,6 +2272,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "ModelsHelper": "1.0.0",
           "Newtonsoft.Json": "13.0.3",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.0",
           "Repository": "1.0.0",
@@ -7152,6 +7163,11 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
+    "ModelsHelper/1.0.0": {
+      "type": "project",
+      "path": "../ModelsHelper/ModelsHelper.csproj",
+      "msbuildProject": "../ModelsHelper/ModelsHelper.csproj"
+    },
     "Repository/1.0.0": {
       "type": "project",
       "path": "../Repository/Repository.csproj",
@@ -7226,8 +7242,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -7278,7 +7293,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

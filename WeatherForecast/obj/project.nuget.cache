@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "0rhvHiAzrhc=",
-  "success": false,
+  "dgSpecHash": "iDRT142OWXE=",
+  "success": true,
   "projectFilePath": "C:\\WeatherForecast\\WeatherForecast\\WeatherForecast.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luizf\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
@@ -116,15 +116,5 @@
     "C:\\Users\\luizf\\.nuget\\packages\\xunit.extensibility.core\\2.5.3\\xunit.extensibility.core.2.5.3.nupkg.sha512",
     "C:\\Users\\luizf\\.nuget\\packages\\xunit.extensibility.execution\\2.5.3\\xunit.extensibility.execution.2.5.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1108",
-      "level": "Error",
-      "message": "Ciclo detectado. \r\n  WeatherForecast -> Repository -> WeatherForecast.",
-      "libraryId": "WeatherForecast",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

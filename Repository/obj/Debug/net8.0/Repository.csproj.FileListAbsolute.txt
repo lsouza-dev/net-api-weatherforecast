@@ -8,6 +8,9 @@ C:\WeatherForecast\Repository\bin\Debug\net8.0\Repository.deps.json
 C:\WeatherForecast\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
 C:\WeatherForecast\Repository\bin\Debug\net8.0\Repository.dll
 C:\WeatherForecast\Repository\bin\Debug\net8.0\Repository.pdb
+C:\WeatherForecast\Repository\bin\Debug\net8.0\ModelsHelper.dll
+C:\WeatherForecast\Repository\bin\Debug\net8.0\ModelsHelper.pdb
+C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.csproj.Up2Date
 C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.dll
 C:\WeatherForecast\Repository\obj\Debug\net8.0\refint\Repository.dll
 C:\WeatherForecast\Repository\obj\Debug\net8.0\Repository.pdb
