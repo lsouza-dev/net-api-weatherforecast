@@ -42,27 +42,18 @@ public record WeatherForecastDTO(
         root.forecast.forecastday.First().astro.moon_phase,
         root.forecast.forecastday
             .FirstOrDefault(f => f.hour
-            .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
+                .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
             ?.astro.is_sun_up ?? 0,
-
-
         root.forecast.forecastday
             .FirstOrDefault(f => f.hour
-            .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
+                .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
             ?.astro.is_moon_up ?? 0,
-
-        //root.forecast.forecastday
-        //.FirstOrDefault(f => f.hour
-        //    .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
-        //?.day.condition.text ?? "",
         root.current.condition.text,
-
         root.forecast.forecastday
-        .FirstOrDefault(f => f.hour
-            .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
-        ?.day.condition.icon ?? "",
-
-        root.forecast.forecastday.Select(fd => new ForecastDayDTO(fd)).ToList()
+            .FirstOrDefault(f => f.hour
+                .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
+            ?.day.condition.icon ?? "",
+        root.forecast.forecastday.SelectMany(fd => fd.hour.Select(h => new ForecastDayDTO(fd.date, h, fd.day))).ToList()
     )
     { }
 }

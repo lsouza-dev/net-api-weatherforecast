@@ -52,5 +52,7 @@ namespace ModelsHelper.Models.Repository.DTOS.Exibicao
             Icon = weatherForecast.Icon;
             Forecasts = weatherForecast.Forecasts?.Select(f => new ForecastDayExibicaoDTO(f)).ToList();
         }
+
+        public WeatherForecastExibicaoDTO() { }
     }
 }

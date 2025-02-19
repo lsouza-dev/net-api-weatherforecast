@@ -8,13 +8,6 @@
 
         public Root() { }
 
-        public Root(Root? weatherResponse)
-        {
-            this.location = weatherResponse.location;
-            this.current = weatherResponse.current;
-            this.forecast = weatherResponse.forecast;
-        }
-
         public override string ToString()
         {
             string locationString = location != null ? location.ToString() : "No location data available";

@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,19 +40,6 @@ namespace Teste.Controllers
 
         }
 
-        //[HttpGet(Name = "GetWeatherForecast")]
-        //public IEnumerable<Repository.Models.WeatherForecast> Get()
-        //{
-        //    return Enumerable.Range(1, 5).Select(index => new Repository.Models.WeatherForecast
-        //    {
-        //        Date = DateTime.Now.AddDays(index),
-        //        TemperatureC = Random.Shared.Next(-20, 55),
-        //        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        //    })
-        //    .ToArray();
-        //}
-
-
 
         [HttpGet("{city}")]
         public async Task<IActionResult> GetWeatherByCity(string city)
@@ -90,7 +78,7 @@ namespace Teste.Controllers
             }
         }
 
-        [HttpGet("{city}/days/{days}")]
+        [HttpGet("{city}/days-interval/{days}")]
         public async Task<IActionResult> GetWeatherByCityAndDays(string city, int days)
         {
             var client = new HttpClient();
@@ -102,15 +90,11 @@ namespace Teste.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var weatherResponse = JsonConvert.DeserializeObject<Root>(content);
-
-                    var root = new Root(weatherResponse);
+                    
+                    var root = JsonConvert.DeserializeObject<Root>(content);
 
                     var weatherForecastDto = new WeatherForecastDTO(root);
-                    var forecastDayDtoList = weatherForecastDto.Forecasts;
-
                     var weather = new WeatherForecast(weatherForecastDto);
-
 
                     _context.Weathers.Add(weather);
 
@@ -121,8 +105,9 @@ namespace Teste.Controllers
 
                     _context.SaveChanges();
 
+                    Console.WriteLine($"Forecasts: {weather.Forecasts.Count}");
 
-                    var formattedJson = JsonConvert.SerializeObject(weatherResponse, Newtonsoft.Json.Formatting.Indented);
+                    var formattedJson = JsonConvert.SerializeObject(root, Newtonsoft.Json.Formatting.Indented);
 
 
                     return Ok(formattedJson);
@@ -138,17 +123,88 @@ namespace Teste.Controllers
         }
 
 
-        [HttpGet("city{city}/day/{day}")]
+        [HttpGet("{city}/day/{day}")]
         public ActionResult GetWeatherByCityAtDay(string city, int day)
         {
             try
             {
-                var forecasts = _context.ForecastsDays.Where(x => x.Data.Day == day).Include(x => x.WeatherForecast).ToList();
+                var forecasts = _context.ForecastsDays.Where(x => x.Data.Day == day && x.WeatherForecast.Cidade == city).ToList();
                 if (forecasts == null) return NotFound($"Não foram encontrados registros de clima para a cidade {city} no dia {day}");
 
                 var forecastsDtos = forecasts.Select(f => new ForecastDayExibicaoDTO(f));
 
                 return Ok(forecastsDtos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno: {ex.Message}");
+            }
+        }
+
+
+        [HttpGet("{city}/now")]
+        public async Task<IActionResult> GetWeatherNow(string city)
+        {
+            try
+            {
+                var now = DateTime.Now;
+                var weather = _context.Weathers.FirstOrDefault(x => x.Cidade == city && x.DataLocal.Day == now.Day && x.DataLocal.Hour == now.Hour);
+                string mensagem = "Clima normal.";
+
+                if (weather == null)
+                {
+                    Console.WriteLine("Dados não encontrados... Realizando busca");
+
+                    var client = new HttpClient();
+                    var url = $"{BASE_URL}/current.json?key={API_KEY}&q={city}&hour={now.Hour}&lang=pt";
+                    var response = await client.GetAsync(url);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        return StatusCode((int)response.StatusCode, "Erro ao acessar a API.");
+                    }
+
+                    Console.WriteLine("Requisição feita com sucesso!");
+                    var content = await response.Content.ReadAsStringAsync();
+                    var root = JsonConvert.DeserializeObject<Root>(content);
+
+                    if (root == null)
+                    {
+                        return StatusCode(500, "Erro de deserialização dos dados da API.");
+                    }
+
+                    Console.WriteLine($"Root: {root}");
+
+                    var weatherDto = new WeatherForecastDTO(root);
+
+                    Console.WriteLine(weatherDto);
+
+                    Console.WriteLine("Criando weather...");
+                    weather = new WeatherForecast(weatherDto);
+
+                    Console.WriteLine("Weather criado..");
+
+                    _context.Weathers.Add(weather);
+                    _context.SaveChanges();
+
+                }
+                
+                if (weather != null)
+                {
+                    if (weather.TempC > 35)
+                        mensagem = "Alerta: A temperatura está acima de 35ºC, passe um protetor e beba bastante água.";
+                    else if (weather.TempC < 10)
+                        mensagem = "Alerta: A temperatura está abaixo de 10ºC, se for sair de casa, não esqueça seu agasalho.";
+
+                }
+
+                return Ok(new
+                {
+                    Mensagem = mensagem,
+                    Dados = new WeatherForecastExibicaoDTO(weather)
+                });
+
+
             }
             catch (Exception ex)
             {

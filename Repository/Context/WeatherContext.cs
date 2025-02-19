@@ -24,7 +24,8 @@ namespace Repository.Context
             modelBuilder.Entity<WeatherForecast>()
                 .HasMany(w => w.Forecasts)
                 .WithOne(f => f.WeatherForecast)
-                .HasForeignKey(f => f.IdWeatherForecast);
+                .HasForeignKey(f => f.IdWeatherForecast)
+                .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);
         }
