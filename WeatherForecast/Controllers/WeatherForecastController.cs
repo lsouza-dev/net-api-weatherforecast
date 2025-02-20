@@ -153,10 +153,8 @@ namespace Teste.Controllers
 
                 if (weather == null)
                 {
-                    Console.WriteLine("Dados não encontrados... Realizando busca");
-
                     var client = new HttpClient();
-                    var url = $"{BASE_URL}/current.json?key={API_KEY}&q={city}&hour={now.Hour}&lang=pt";
+                    var url = $"{BASE_URL}/forecast.json?key={API_KEY}&q={city}&hour={now.Hour}&day=1z&lang=pt";
                     var response = await client.GetAsync(url);
 
                     if (!response.IsSuccessStatusCode)
@@ -164,7 +162,6 @@ namespace Teste.Controllers
                         return StatusCode((int)response.StatusCode, "Erro ao acessar a API.");
                     }
 
-                    Console.WriteLine("Requisição feita com sucesso!");
                     var content = await response.Content.ReadAsStringAsync();
                     var root = JsonConvert.DeserializeObject<Root>(content);
 
@@ -173,16 +170,9 @@ namespace Teste.Controllers
                         return StatusCode(500, "Erro de deserialização dos dados da API.");
                     }
 
-                    Console.WriteLine($"Root: {root}");
-
                     var weatherDto = new WeatherForecastDTO(root);
 
-                    Console.WriteLine(weatherDto);
-
-                    Console.WriteLine("Criando weather...");
                     weather = new WeatherForecast(weatherDto);
-
-                    Console.WriteLine("Weather criado..");
 
                     _context.Weathers.Add(weather);
                     _context.SaveChanges();

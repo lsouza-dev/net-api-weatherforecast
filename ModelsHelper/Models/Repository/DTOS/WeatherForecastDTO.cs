@@ -53,7 +53,7 @@ public record WeatherForecastDTO(
             .FirstOrDefault(f => f.hour
                 .Any(fh => DateTime.ParseExact(fh.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture).Hour == DateTime.Now.Hour))
             ?.day.condition.icon ?? "",
-        root.forecast.forecastday.SelectMany(fd => fd.hour.Select(h => new ForecastDayDTO(fd.date, h, fd.day))).ToList()
+         root.forecast.forecastday.SelectMany(fd => fd.hour.Select(h => new ForecastDayDTO(fd.date, h, fd.day))).ToList()
     )
     { }
 }

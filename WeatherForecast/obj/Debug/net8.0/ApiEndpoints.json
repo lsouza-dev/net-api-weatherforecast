@@ -1,0 +1,76 @@
+[
+  {
+    "ContainingType": "Teste.Controllers.WeatherForecastController",
+    "Method": "GetWeatherByCity",
+    "RelativePath": "WeatherForecast/{city}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Teste.Controllers.WeatherForecastController",
+    "Method": "GetWeatherByCityAtDay",
+    "RelativePath": "WeatherForecast/{city}/day/{day}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "day",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Teste.Controllers.WeatherForecastController",
+    "Method": "GetWeatherByCityAndDays",
+    "RelativePath": "WeatherForecast/{city}/days-interval/{days}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "days",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Teste.Controllers.WeatherForecastController",
+    "Method": "GetWeatherNow",
+    "RelativePath": "WeatherForecast/{city}/now",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
