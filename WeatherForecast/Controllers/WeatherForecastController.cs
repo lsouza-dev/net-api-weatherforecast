@@ -202,5 +202,50 @@ namespace Teste.Controllers
             }
         }
 
+
+        [HttpGet("{city}/week")]
+        public async Task<IActionResult> GetWeatherByCityAndWeek(string city)
+        {
+            var client = new HttpClient();
+            var url = $"{BASE_URL}/forecast.json?key={API_KEY}&q={city}&days=7&lang=pt";
+
+            try
+            {
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    var root = JsonConvert.DeserializeObject<Root>(content);
+
+                    var weatherForecastDto = new WeatherForecastDTO(root);
+                    var weather = new WeatherForecast(weatherForecastDto);
+
+                    _context.Weathers.Add(weather);
+
+                    foreach (var f in weather.Forecasts)
+                    {
+                        _context.ForecastsDays.Add(f);
+                    }
+
+                    _context.SaveChanges();
+
+                    Console.WriteLine($"Forecasts: {weather.Forecasts.Count}");
+
+                    var formattedJson = JsonConvert.SerializeObject(root, Newtonsoft.Json.Formatting.Indented);
+
+
+                    return Ok(formattedJson);
+                }
+
+                return StatusCode((int)response.StatusCode, "Erro ao acessar a API");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno: {ex.Message}");
+            }
+
+        }
+
     }
 }
