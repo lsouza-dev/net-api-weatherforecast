@@ -20,7 +20,7 @@ namespace ModelsHelper.Models.Repository
         [Column("DATA_LOCAL")] public DateTime DataLocal { get; set; }
         [Column("ULTIMA_ATUALIZACAO")] public DateTime UltimaAtualizacao { get; set; }
         [Column("TEMP_C")] public double TempC { get; set; }
-        [Column("TEMP_F")] public double TemF { get; set; }
+        [Column("TEMP_F")] public double TempF { get; set; }
         [Column("SENSACAO_TERMICA_C")] public double SensacaoTermicaC { get; set; }
         [Column("SENSACAO_TERMICA_F")] public double SensacaoTermicaF { get; set; }
         [Column("UMIDADE")] public int Umidade { get; set; }
@@ -45,7 +45,7 @@ namespace ModelsHelper.Models.Repository
             DataLocal = dto.DataLocal;
             UltimaAtualizacao = dto.UltimaAtualizacao;
             TempC = dto.TempC;
-            TemF = dto.TempF;
+            TempF = dto.TempF;
             SensacaoTermicaC = dto.SensacaoTermicaC;
             SensacaoTermicaF = dto.SensacaoTermicaF;
             Umidade = dto.Umidade;
@@ -65,7 +65,7 @@ namespace ModelsHelper.Models.Repository
         {
             string forecastsString = string.Join("\n", Forecasts.Select(f => f.ToString()));
             return $"WeatherForecast: [Cidade: {Cidade}, Estado: {Estado}, Pais: {Pais}, DataLocal: {DataLocal}, " +
-                   $"UltimaAtualizacao: {UltimaAtualizacao}, TempC: {TempC}°C, TempF: {TemF}°F, " +
+                   $"UltimaAtualizacao: {UltimaAtualizacao}, TempC: {TempC}°C, TempF: {TempF}°F, " +
                    $"SensacaoTermicaC: {SensacaoTermicaC}°C, SensacaoTermicaF: {SensacaoTermicaF}°F, Umidade: {Umidade}%, " +
                    $"NascerDoSol: {NascerDoSol}, PorDoSol: {PorDoSol}, NascerDaLua: {NascerDaLua}, PorDaLua: {PorDaLua}, " +
                    $"FaseDaLua: {FaseDaLua}, EstaDeDia: {EstaDeDia}, EstaDeNoite: {EstaDeNoite}, CondicaoCeu: {CondicaoCeu}, " +

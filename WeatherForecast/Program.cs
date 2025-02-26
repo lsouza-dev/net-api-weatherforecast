@@ -21,6 +21,16 @@ builder.Services.AddDbContext<WeatherContext>(options =>
        )
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") // Permite o Angular acessar a API
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
@@ -31,6 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowAngular");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
