@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 using System.Runtime;
 using System.Text;
@@ -37,22 +38,22 @@ namespace ModelsHelper.Models.Repository
 
         public ForecastDay(ForecastDayDTO dto)
         {
-            Data = dto.Data;
-            Horario = dto.Horario;
-            TempC = dto.TempC;
-            TempF = dto.TempF;
-            CondicaoCeu = dto.CondicaoCeu;
-            Icon = dto.Icon;
-            PrevisaoMm = dto.PrevisaoMm;
-            NeveCm = dto.NeveCm;
-            Umidade = dto.Umidade;
-            Nebulosidade = dto.Nebulosidade;
-            SensacaoTermicaC = dto.SensacaoTermicaC;
-            SensacaoTermicaF = dto.SensacaoTermicaF;
-            VaiChover = dto.VaiChover;
-            ChanceChuva = dto.ChanceChuva;
-            VaiNevar = dto.VaiNevar;
-            ChanceNeve = dto.ChanceNeve;
+            Data = DateOnly.ParseExact(dto.Date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            Horario = dto.Hour.time;
+            TempC = dto.Hour.temp_c;
+            TempF = dto.Hour.temp_f;
+            CondicaoCeu = dto.Hour.condition.text;
+            Icon = dto.Day.condition.icon; // Ou alguma propriedade relevante
+            PrevisaoMm = dto.Hour.precip_mm;
+            NeveCm = dto.Hour.snow_cm;
+            Umidade = dto.Hour.humidity;
+            Nebulosidade = dto.Hour.cloud;
+            SensacaoTermicaC = dto.Hour.feelslike_c;
+            SensacaoTermicaF = dto.Hour.feelslike_f;
+            VaiChover = dto.Hour.will_it_rain;
+            ChanceChuva = dto.Hour.chance_of_rain;
+            VaiNevar = dto.Hour.will_it_snow;
+            ChanceNeve = dto.Hour.chance_of_snow;
         }
 
         public override string ToString()

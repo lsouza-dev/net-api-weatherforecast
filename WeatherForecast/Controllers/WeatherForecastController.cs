@@ -134,7 +134,7 @@ namespace Teste.Controllers
                 if (weather == null)
                 {
                     var client = new HttpClient();
-                    var url = $"{BASE_URL}/forecast.json?key={API_KEY}&q={city}&hour={now.Hour}&day=1z&lang=pt";
+                    var url = $"{BASE_URL}/forecast.json?key={API_KEY}&q={city}&hour={now.Hour}&day=1&lang=pt";
                     var response = await client.GetAsync(url);
 
                     if (!response.IsSuccessStatusCode)

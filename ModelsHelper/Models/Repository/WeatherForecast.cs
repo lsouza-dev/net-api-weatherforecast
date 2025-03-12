@@ -61,6 +61,34 @@ namespace ModelsHelper.Models.Repository
             Forecasts = dto.Forecasts.Select(f => new ForecastDay(f)).ToList();
         }
 
+        public WeatherForecast(int id, string cidade, string estado, string pais, DateTime dataLocal, DateTime ultimaAtualizacao,
+        double tempC, double tempF, double sensacaoTermicaC, double sensacaoTermicaF, int umidade, TimeOnly nascerDoSol,
+        TimeOnly porDoSol, TimeOnly nascerDaLua, TimeOnly porDaLua, string faseDaLua, int estaDeDia, int estaDeNoite,
+        string condicaoCeu, string icon)
+        {
+            Id = id;
+            Cidade = cidade;
+            Estado = estado;
+            Pais = pais;
+            DataLocal = dataLocal;
+            UltimaAtualizacao = ultimaAtualizacao;
+            TempC = tempC;
+            TempF = tempF;
+            SensacaoTermicaC = sensacaoTermicaC;
+            SensacaoTermicaF = sensacaoTermicaF;
+            Umidade = umidade;
+            NascerDoSol = nascerDoSol;
+            PorDoSol = porDoSol;
+            NascerDaLua = nascerDaLua;
+            PorDaLua = porDaLua;
+            FaseDaLua = faseDaLua;
+            EstaDeDia = estaDeDia;
+            EstaDeNoite = estaDeNoite;
+            CondicaoCeu = condicaoCeu;
+            Icon = icon;
+            Forecasts = new List<ForecastDay>(); // Inicializa a lista vazia
+        }
+
         public override string ToString()
         {
             string forecastsString = string.Join("\n", Forecasts.Select(f => f.ToString()));

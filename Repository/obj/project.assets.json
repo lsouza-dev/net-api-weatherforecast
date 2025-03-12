@@ -2612,11 +2612,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WeatherForecast\\Repository\\Repository.csproj",
+      "projectUniqueName": "C:\\Angular\\WeatherForecast\\Back\\WeatherForecast\\Repository\\Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "C:\\WeatherForecast\\Repository\\Repository.csproj",
+      "projectPath": "C:\\Angular\\WeatherForecast\\Back\\WeatherForecast\\Repository\\Repository.csproj",
       "packagesPath": "C:\\Users\\luizf\\.nuget\\packages\\",
-      "outputPath": "C:\\WeatherForecast\\Repository\\obj\\",
+      "outputPath": "C:\\Angular\\WeatherForecast\\Back\\WeatherForecast\\Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2637,8 +2637,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\WeatherForecast\\ModelsHelper\\ModelsHelper.csproj": {
-              "projectPath": "C:\\WeatherForecast\\ModelsHelper\\ModelsHelper.csproj"
+            "C:\\Angular\\WeatherForecast\\Back\\WeatherForecast\\ModelsHelper\\ModelsHelper.csproj": {
+              "projectPath": "C:\\Angular\\WeatherForecast\\Back\\WeatherForecast\\ModelsHelper\\ModelsHelper.csproj"
             }
           }
         }
