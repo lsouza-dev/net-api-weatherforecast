@@ -1,7 +1,4 @@
-using System.Globalization;
-using System.Xml;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ModelsHelper.Models.Repository;
 using ModelsHelper.Models.Repository.DTOS.Exibicao;
 using ModelsHelper.Models.WeatherForecast;
