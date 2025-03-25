@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ModelsHelper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb65bbddc93384b0bfe5f0149a450b55947959c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e40b0365bf5cd7a80bcccc0735814004dd3e7376")]
 [assembly: System.Reflection.AssemblyProductAttribute("ModelsHelper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ModelsHelper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

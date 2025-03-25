@@ -11,11 +11,11 @@ C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\refint\ModelsHelper.dll
 C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.pdb
 C:\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ref\ModelsHelper.dll
 C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.deps.json
+C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.dll
+C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.pdb
 C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.GeneratedMSBuildEditorConfig.editorconfig
 C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.AssemblyInfoInputs.cache
 C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.AssemblyInfo.cs
-C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.dll
-C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\bin\Debug\net8.0\ModelsHelper.pdb
 C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.csproj.CoreCompileInputs.cache
 C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.sourcelink.json
 C:\Angular\WeatherForecast\Back\WeatherForecast\ModelsHelper\obj\Debug\net8.0\ModelsHelper.dll
