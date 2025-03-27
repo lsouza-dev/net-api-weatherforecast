@@ -5,6 +5,28 @@
     "version": "1.0"
   },
   "paths": {
+    "/NewsApi/{country}": {
+      "get": {
+        "tags": [
+          "NewsApi"
+        ],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast/{city}": {
       "get": {
         "tags": [
@@ -90,6 +112,28 @@
       }
     },
     "/WeatherForecast/{city}/now": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast/{city}/week": {
       "get": {
         "tags": [
           "WeatherForecast"

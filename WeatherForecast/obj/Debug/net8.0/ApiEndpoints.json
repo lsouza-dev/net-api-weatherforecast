@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Teste.Controllers.NewsApiController",
+    "Method": "GetNewsByCity",
+    "RelativePath": "NewsApi/{country}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "country",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Teste.Controllers.WeatherForecastController",
     "Method": "GetWeatherByCity",
     "RelativePath": "WeatherForecast/{city}",
@@ -61,6 +77,22 @@
     "ContainingType": "Teste.Controllers.WeatherForecastController",
     "Method": "GetWeatherNow",
     "RelativePath": "WeatherForecast/{city}/now",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Teste.Controllers.WeatherForecastController",
+    "Method": "GetWeatherByCityAndWeek",
+    "RelativePath": "WeatherForecast/{city}/week",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
