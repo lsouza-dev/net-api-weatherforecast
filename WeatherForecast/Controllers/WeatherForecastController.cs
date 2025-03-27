@@ -1,7 +1,4 @@
-using System.Globalization;
-using System.Xml;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ModelsHelper.Models.Repository;
 using ModelsHelper.Models.Repository.DTOS.Exibicao;
 using ModelsHelper.Models.WeatherForecast;
@@ -63,8 +60,9 @@ namespace Teste.Controllers
         public async Task<IActionResult> GetWeatherByCityAndDays(string city, int days)
         {
             try
-            {
+              {
                 var client = new HttpClient();
+                var data = DateTime.Now.ToString("yyyy-MM-dd");
                 var url = $"{BASE_URL}/forecast.json?key={API_KEY}&q={city}&days={days}&lang=pt";
                 var response = await client.GetAsync(url);
 
